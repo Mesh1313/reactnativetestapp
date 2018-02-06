@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
-    StyleSheet,
-    ScrollView
+    StyleSheet
 } from 'react-native';
 import { connect } from 'react-redux';
-import { getData, onGetDataSuccess } from '../stateManagement/actions';
-import HeadingComponent from './HeadingComponent';
-import QuestionsListViewConponent from './QuestionsListViewConponent';
+import { Actions } from '../../actions';
+import HeadingComponent from '../HeadingComponent';
+import QuestionsListViewComponent from '../QuestionsListViewComponent';
+import settings from '../../config/settings';
+import styles from './styles';
 
 class StackoverflowPage extends Component {
 
@@ -28,7 +29,7 @@ class StackoverflowPage extends Component {
                     this.props.isFetching && <Text style={styles.loadingText}>Loading...</Text>
                 }
                 {
-                    this.props.questions.length > 0 && <QuestionsListViewConponent questions={this.props.questions}/>
+                    this.props.questions.length > 0 && <QuestionsListViewComponent questions={this.props.questions}/>
                 }
             </View>
         );
@@ -37,11 +38,11 @@ class StackoverflowPage extends Component {
 
 function fetchData() {
     return (dispatch) => {
-        dispatch(getData());
-        fetch('https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&tagged=react-native&site=stackoverflow')
+        dispatch(Actions.getData());
+        fetch(settings.getReactNativeQuestionsUrl)
             .then(response => response.json())
             .then(function(response) {
-                dispatch(onGetDataSuccess(response.items));
+                dispatch(Actions.onGetDataSuccess(response.items));
             });
     }
 }
@@ -56,20 +57,3 @@ export default connect((state) => {
         fetchData: () => dispatch(fetchData())
     }
 })(StackoverflowPage);
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center'
-    },
-    title: {
-        marginBottom: 30,
-        fontSize: 30
-    },
-    loadingText: {
-        fontSize: 30,
-        paddingTop: 50,
-        color: '#000'
-    }
-});

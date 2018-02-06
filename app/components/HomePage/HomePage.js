@@ -5,10 +5,10 @@ import {
     StyleSheet
 } from 'react-native';
 import { connect } from 'react-redux';
-import HeadingComponent from './HeadingComponent';
+import HeadingComponent from '../HeadingComponent';
+import styles from './styles';
 
 class HomePage extends Component {
-
     render() {
         return (
             <View style={styles.container}>
@@ -24,15 +24,3 @@ export default connect((state) => {
         username: state.userReducer.username
     }
 }, null)(HomePage);
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center'
-    },
-    title: {
-        marginBottom: 30,
-        fontSize: 30
-    }
-});

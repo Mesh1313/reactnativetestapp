@@ -5,11 +5,15 @@ import {
     StyleSheet,
     ScrollView
 } from 'react-native';
+import styles from './styles';
 
-export default class QuestionsListViewConponent extends Component {
-
+export default class QuestionsListViewComponent extends Component {
     constructor(props) {
         super(props);
+    }
+
+    isEven(index) {
+        return index%2 === 0;
     }
 
     render() {
@@ -17,7 +21,7 @@ export default class QuestionsListViewConponent extends Component {
             <ScrollView>
                 {
                     this.props.questions.map((item, index) => (
-                        <View key={index} style={ (index%2 == 0) ? [styles.item, styles.itemEven] : styles.item }>
+                        <View key={index} style={ this.isEven(index) ? [styles.item, styles.itemEven] : styles.item }>
                             <Text style={styles.itemText}>
                                 {item.title}
                             </Text>
@@ -28,17 +32,3 @@ export default class QuestionsListViewConponent extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    item: {
-        paddingHorizontal: 5,
-        paddingVertical: 10
-    },
-    itemEven: {
-        backgroundColor: '#EEE'
-    },
-    itemText: {
-        fontSize: 20,
-        color: '#000'
-    }
-});

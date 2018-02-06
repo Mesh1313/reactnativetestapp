@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import {
-    Platform,
-    StyleSheet,
-    Text,
-    View
-} from 'react-native';
 import { Provider } from 'react-redux';
-import Router from './router';
-import configureStore from './stateManagement/store.js'
+import Router from './config/router';
+import configureStore from './store/index'
 
 export default class App extends Component {
     constructor(props) {

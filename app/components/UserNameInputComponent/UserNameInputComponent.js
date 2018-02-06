@@ -6,8 +6,9 @@ import {
     TextInput
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import styles from './styles';
 
-export default class userNameInput extends Component {
+export default class userNameInputComponent extends Component {
     setUserName(value) {
         this.props.setUserName(value);
     }
@@ -29,25 +30,3 @@ export default class userNameInput extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    icons: {
-        fontSize: 20,
-        marginRight: 10,
-        textAlign: 'left',
-        color: 'black'
-    },
-    textInput: {
-        borderColor: 'gray',
-        borderWidth: 1,
-        width: 170,
-        marginBottom: 20,
-        padding: 0,
-        paddingHorizontal: 10
-    },
-    inputHolder: {
-        flexWrap: 'wrap',
-        alignItems: 'stretch',
-        flexDirection: 'row'
-    }
-});

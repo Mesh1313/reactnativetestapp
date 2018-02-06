@@ -1,5 +1,4 @@
-import userReducer from './reducer';
-import dataReducer from './dataReducer';
+import reducers from '../reducers';
 import {
     createStore,
     combineReducers,
@@ -9,12 +8,9 @@ import thunk from 'redux-thunk';
 
 export default function configureStore() {
     let store = createStore(
-        combineReducers({
-            userReducer,
-            dataReducer
-        }),
+        combineReducers(reducers),
         applyMiddleware(thunk)
     );
 
-    return store
+    return store;
 }

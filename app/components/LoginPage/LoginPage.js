@@ -6,13 +6,14 @@ import {
     TextInput,
     TouchableOpacity
 } from 'react-native';
+import styles from './styles';
 
 import { connect } from 'react-redux';
 
 //sub components
-import UserNameInput from './UserNameInputComponent'
-import UserNamePassword from './UserPasswordInputComponent'
-import { updateUserCredentials } from "../stateManagement/actions";
+import UserNameInputComponent from '../UserNameInputComponent';
+import UserPasswordInputComponent from '../UserPasswordInputComponent'
+import { Actions } from "../../actions";
 
 class LoginPage extends Component {
     static navigationOptions = {
@@ -22,6 +23,10 @@ class LoginPage extends Component {
 
     constructor(props) {
         super(props);
+
+        this.onPressLogin = this.onPressLogin.bind(this);
+        this.setName = this.setName.bind(this);
+        this.setPassword = this.setPassword.bind(this);
     }
 
     onPressLogin() {
@@ -32,7 +37,7 @@ class LoginPage extends Component {
             !(this.state.password && this.state.password.length)
         ) return;
         
-        this.props.dispatch(updateUserCredentials({
+        this.props.dispatch(Actions.updateUserCredentials({
             username: this.state.username,
             password: this.state.password
         }));
@@ -53,13 +58,13 @@ class LoginPage extends Component {
             <View style={styles.container}>
                 <Text style={styles.title}>Welcome</Text>
 
-                <UserNameInput setUserName={this.setName.bind(this)}/>
+                <UserNameInputComponent setUserName={ this.setName }/>
 
-                <UserNamePassword setUserPassword={this.setPassword.bind(this)}/>
+                <UserPasswordInputComponent setUserPassword={ this.setPassword }/>
 
                 <TouchableOpacity
                     style={styles.loginBtn}
-                    onPress={this.onPressLogin.bind(this)}
+                    onPress={ this.onPressLogin }
                 >
                     <Text style={styles.btnText}>Log In</Text>
                 </TouchableOpacity>
@@ -69,44 +74,3 @@ class LoginPage extends Component {
 }
 
 export default connect()(LoginPage)
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    title: {
-        marginBottom: 30,
-        fontSize: 30
-    },
-    icons: {
-        fontSize: 20,
-        marginRight: 10,
-        textAlign: 'left',
-        color: 'black'
-    },
-    textInput: {
-        borderColor: 'gray',
-        borderWidth: 1,
-        width: 150,
-        marginBottom: 20,
-        padding: 0,
-        paddingHorizontal: 10
-    },
-    inputHolder: {
-        flexWrap: 'wrap',
-        alignItems: 'stretch',
-        flexDirection: 'row'
-    },
-    loginBtn: {
-        paddingVertical: 10,
-        backgroundColor: '#EEE',
-        width: 100
-    },
-    btnText: {
-        fontSize: 18,
-        textAlign: 'center'
-    }
-});
