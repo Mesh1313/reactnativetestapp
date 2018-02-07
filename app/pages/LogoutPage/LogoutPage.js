@@ -5,7 +5,7 @@ import {
     StyleSheet,
     TouchableOpacity
 } from 'react-native';
-import HeadingComponent from '../HeadingComponent';
+import HeadingComponent from '../../components/HeadingComponent/index';
 import styles from './styles';
 
 export default class LogoutPage extends Component {

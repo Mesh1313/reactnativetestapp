@@ -1,9 +1,9 @@
 import { DrawerNavigator } from 'react-navigation';
 //components
-import LoginPage from '../components/LoginPage';
-import HomePage from '../components/HomePage';
-import StackoverflowPage from '../components/StackoverflowPage';
-import LogoutPage from '../components/LogoutPage';
+import LoginPage from '../pages/LoginPage';
+import HomePage from '../pages/HomePage';
+import StackoverflowPage from '../pages/StackoverflowPage';
+import LogoutPage from '../pages/LogoutPage';
 
 const DrawerNavigation = DrawerNavigator(
     {

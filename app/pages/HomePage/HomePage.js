@@ -5,7 +5,7 @@ import {
     StyleSheet
 } from 'react-native';
 import { connect } from 'react-redux';
-import HeadingComponent from '../HeadingComponent';
+import HeadingComponent from '../../components/HeadingComponent/index';
 import styles from './styles';
 
 class HomePage extends Component {

@@ -5,9 +5,9 @@ import {
     StyleSheet
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Actions } from '../../actions';
-import HeadingComponent from '../HeadingComponent';
-import QuestionsListViewComponent from '../QuestionsListViewComponent';
+import { Actions } from '../../actions/index';
+import HeadingComponent from '../../components/HeadingComponent/index';
+import QuestionsListViewComponent from '../../components/QuestionsListViewComponent/index';
 import settings from '../../config/settings';
 import styles from './styles';
 

@@ -11,9 +11,9 @@ import styles from './styles';
 import { connect } from 'react-redux';
 
 //sub components
-import UserNameInputComponent from '../UserNameInputComponent';
-import UserPasswordInputComponent from '../UserPasswordInputComponent'
-import { Actions } from "../../actions";
+import UserNameInputComponent from '../../components/UserNameInputComponent/index';
+import UserPasswordInputComponent from '../../components/UserPasswordInputComponent/index'
+import { Actions } from "../../actions/index";
 
 class LoginPage extends Component {
     static navigationOptions = {
