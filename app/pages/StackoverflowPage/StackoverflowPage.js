@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text,
-    StyleSheet
+    Text
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from '../../actions/index';
 import HeadingComponent from '../../components/HeadingComponent/index';
 import QuestionsListViewComponent from '../../components/QuestionsListViewComponent/index';
-import settings from '../../config/settings';
 import styles from './styles';
 
 class StackoverflowPage extends Component {
@@ -37,14 +35,7 @@ class StackoverflowPage extends Component {
 }
 
 function fetchData() {
-    return (dispatch) => {
-        dispatch(Actions.getData());
-        fetch(settings.getReactNativeQuestionsUrl)
-            .then(response => response.json())
-            .then(function(response) {
-                dispatch(Actions.onGetDataSuccess(response.items));
-            });
-    }
+    return Actions.getStackoverflowQuestions(Actions.getData, Actions.onGetDataSuccess);
 }
 
 export default connect((state) => {

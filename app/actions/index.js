@@ -7,7 +7,8 @@ import {
 import {
     updateUserCredentials,
     getData,
-    onGetDataSuccess
+    onGetDataSuccess,
+    getStackoverflowQuestions
 } from './actions';
 
 export const ActionTypes = {
@@ -20,5 +21,6 @@ export const ActionTypes = {
 export const Actions = {
     updateUserCredentials,
     getData,
-    onGetDataSuccess
+    onGetDataSuccess,
+    getStackoverflowQuestions
 };
