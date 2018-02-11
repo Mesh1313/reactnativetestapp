@@ -38,13 +38,16 @@ function fetchData() {
     return Actions.getStackoverflowQuestions(Actions.getData, Actions.onGetDataSuccess);
 }
 
-export default connect((state) => {
-    return {
-        questions: state.dataReducer.data,
-        isFetching: state.dataReducer.isFetching
+export default connect(
+    (state) => {
+        return {
+            questions: state.dataReducer.data,
+            isFetching: state.dataReducer.isFetching
+        }
+    },
+    (dispatch) => {
+        return {
+            fetchData: () => dispatch(fetchData())
+        }
     }
-}, (dispatch) => {
-    return {
-        fetchData: () => dispatch(fetchData())
-    }
-})(StackoverflowPage);
+)(StackoverflowPage);
